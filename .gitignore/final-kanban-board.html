@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Final Kanban Board</title>
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --surface-2: #f1efe9;
+      --text: #28251d;
+      --muted: #6f6a61;
+      --border: #d7d2c9;
+      --primary: #01696f;
+      --done: #437a22;
+      --progress: #d19900;
+      --review: #7a39bb;
+      --backlog: #964219;
+      --sprint: #006494;
+      --debt: #a12c7b;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+    p {
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(260px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .col {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      min-height: 700px;
+      box-shadow: var(--shadow);
+    }
+    .col h2 {
+      margin: 0 0 14px;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .count {
+      font-size: .8rem;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .product .count { background: var(--backlog); }
+    .sprint .count { background: var(--sprint); }
+    .progress .count { background: var(--progress); color: #222; }
+    .review .count { background: var(--review); }
+    .done .count { background: var(--done); }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .tag {
+      font-size: .76rem;
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-weight: 600;
+      background: #ece8e0;
+      color: #3b352c;
+    }
+    .enhancement { background: #d8ecec; color: #0c4e54; }
+    .technical-debt { background: #efd7e6; color: #7d1e5e; }
+    .estimate { background: #efe6cb; color: #6e5200; }
+    .assignee { background: #dbe6f1; color: #12486b; }
+    .milestone { background: #dce8df; color: #295534; }
+    .story {
+      font-size: .9rem;
+      margin: 8px 0;
+    }
+    .criteria {
+      margin: 10px 0 0;
+      padding-left: 18px;
+      font-size: .84rem;
+      color: var(--muted);
+    }
+    .footer {
+      margin-top: 24px;
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    @media (max-width: 1200px) {
+      .board { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 700px) {
+      .board { grid-template-columns: 1fr; }
+      .col { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Final Kanban Board — Campus Barter System</h1>
+    <p>Repository: <strong>agile-final-project</strong> · Milestone: <strong>Sprint 1: Core Barter Features</strong> · Assignee for active work: <strong>Aneesh Tayal</strong></p>
+
+    <div class="board">
+      <section class="col product">
+        <h2>Product Backlog <span class="count">2</span></h2>
+
+        <article class="card">
+          <h3>#9 Categories Setup</h3>
+          <div class="story">As an <strong>admin</strong>, I need <strong>predefined categories</strong>, so that <strong>students organize listings effectively</strong>.</div>
+          <div class="meta">
+            <span class="tag enhancement">enhancement</span>
+            <span class="tag estimate">Estimate: 2</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given admin access, When adding a new category, Then it appears in the item listing form.</li>
+            <li>Given active categories, When listing an item, Then students must select one.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>#2 Student Registration</h3>
+          <div class="story">As a <strong>student</strong>, I need <strong>to create an account</strong>, so that <strong>I can list items and receive trade proposals</strong>.</div>
+          <div class="meta">
+            <span class="tag enhancement">enhancement</span>
+            <span class="tag estimate">Estimate: 2</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given valid email, password, and university ID, When I register, Then I can log in.</li>
+            <li>Given duplicate email, When I register, Then I see an error.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="col sprint">
+        <h2>Sprint Backlog <span class="count">2</span></h2>
+
+        <article class="card">
+          <h3>#10 Trade History</h3>
+          <div class="story">As a <strong>student</strong>, I need <strong>past trade history</strong>, so that <strong>I track completed barters</strong>.</div>
+          <div class="meta">
+            <span class="tag enhancement">enhancement</span>
+            <span class="tag estimate">Estimate: 3</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given completed trades, When viewing history, Then date, items, and partner are shown.</li>
+            <li>Given a date filter, When I search, Then only matching trades display.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>#4 Send Trade Proposal</h3>
+          <div class="story">As a <strong>student</strong>, I need <strong>to propose a trade with my item</strong>, so that <strong>the owner can accept or counter</strong>.</div>
+          <div class="meta">
+            <span class="tag enhancement">enhancement</span>
+            <span class="tag estimate">Estimate: 5</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given I view an item, When I select my item and send proposal, Then the owner gets a notification.</li>
+            <li>Given I own no items, When I propose a trade, Then I am prompted to list one first.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="col progress">
+        <h2>In Progress <span class="count">2</span></h2>
+
+        <article class="card">
+          <h3>#6 Admin Fraud Flagging</h3>
+          <div class="story">As an <strong>admin</strong>, I need <strong>to flag fraudulent listings</strong>, so that <strong>the community stays safe from scams</strong>.</div>
+          <div class="meta">
+            <span class="tag technical-debt">technical debt</span>
+            <span class="tag estimate">Estimate: 3</span>
+            <span class="tag assignee">Assignee: Aneesh Tayal</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given a suspicious item, When an admin flags it, Then it is hidden pending review.</li>
+            <li>Given the flagged queue, When reviewed, Then admin can approve or remove with an audit log.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>#8 Notifications</h3>
+          <div class="story">As a <strong>student</strong>, I need <strong>real-time notifications for proposals</strong>, so that <strong>I respond promptly</strong>.</div>
+          <div class="meta">
+            <span class="tag enhancement">enhancement</span>
+            <span class="tag estimate">Estimate: 5</span>
+            <span class="tag assignee">Assignee: Aneesh Tayal</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given a new proposal, When it is received, Then an email and in-app alert appear.</li>
+            <li>Given a read notification, When marked, Then it clears from unread.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="col review">
+        <h2>Review/QA <span class="count">2</span></h2>
+
+        <article class="card">
+          <h3>#7 Profile Management</h3>
+          <div class="story">As a <strong>student</strong>, I need <strong>to manage my profile and inventory</strong>, so that <strong>others trust my listings</strong>.</div>
+          <div class="meta">
+            <span class="tag enhancement">enhancement</span>
+            <span class="tag estimate">Estimate: 1</span>
+            <span class="tag assignee">Assignee: Aneesh Tayal</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given I am logged in, When editing profile, Then bio, photo, and ID update.</li>
+            <li>Given my inventory, When deleting an item, Then it is removed from search and inventory.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>#3 Search Items</h3>
+          <div class="story">As a <strong>student</strong>, I need <strong>to search items by category or keyword</strong>, so that <strong>I find relevant barter opportunities quickly</strong>.</div>
+          <div class="meta">
+            <span class="tag technical-debt">technical debt</span>
+            <span class="tag estimate">Estimate: 3</span>
+            <span class="tag assignee">Assignee: Aneesh Tayal</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given I enter a keyword, When I search, Then only matching items are shown.</li>
+            <li>Given no results, When I search, Then I see a helpful empty state.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="col done">
+        <h2>Done <span class="count">2</span></h2>
+
+        <article class="card">
+          <h3>#1 Student Item Listing</h3>
+          <div class="story">As a <strong>student</strong>, I need <strong>to list an item for barter</strong>, so that <strong>others can see it and propose trades</strong>.</div>
+          <div class="meta">
+            <span class="tag enhancement">enhancement</span>
+            <span class="tag estimate">Estimate: 5</span>
+            <span class="tag assignee">Assignee: Aneesh Tayal</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given I am logged in, When I submit item details, Then the item appears in public listings.</li>
+            <li>Given missing required fields, When I submit, Then validation errors are shown.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>#5 View Proposals</h3>
+          <div class="story">As a <strong>student</strong>, I need <strong>to view incoming trade proposals</strong>, so that <strong>I can accept, reject, or counter</strong>.</div>
+          <div class="meta">
+            <span class="tag enhancement">enhancement</span>
+            <span class="tag estimate">Estimate: 2</span>
+            <span class="tag assignee">Assignee: Aneesh Tayal</span>
+            <span class="tag milestone">Sprint 1</span>
+          </div>
+          <ul class="criteria">
+            <li>Given I have proposals, When I open the dashboard, Then sender item, message, and actions are visible.</li>
+            <li>Given I accept a proposal, When viewing status, Then it becomes Trade Confirmed for both users.</li>
+          </ul>
+        </article>
+      </section>
+    </div>
+
+    <div class="footer">
+      <strong>Submission notes:</strong> Requirements 9 and 10 are marked as <em>technical debt</em>. All stories in non-empty columns are assigned to <strong>Sprint 1</strong>. Stories in active columns (<strong>In Progress</strong>, <strong>Review/QA</strong>, and <strong>Done</strong>) are assigned to <strong>Aneesh Tayal</strong> and include estimates where required.
+    </div>
+  </div>
+</body>
+</html>
